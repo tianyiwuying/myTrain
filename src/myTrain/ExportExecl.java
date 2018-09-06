@@ -56,7 +56,7 @@ public static void main(String[] args) throws IOException
     row2 第2个单元格的行号（图片右下角位置）
 
 	HSSFClientAnchor(int dx1, int dy1, int dx2, int dy2, short col1, int row1, short col2, int row2)
-	*/  
+	*/   
     HSSFClientAnchor anchor = new HSSFClientAnchor(0, 0, 0, 0,(short)1, 1, (short)5, 8);
     //第一种方式
    //base64码data:image/jpeg;base64,
@@ -129,6 +129,7 @@ public static void main(String[] args) throws IOException
     
 	 
 	output.flush();  
+	output.close();
  }
 
 public static byte[] saveBase64strToFile(String base64str){
@@ -136,9 +137,8 @@ public static byte[] saveBase64strToFile(String base64str){
         return null;
     }
     try{
-	byte[] decodeBase64 = Base64.decodeBase64(base64str);
-	System.out.println("Result:" + new String(decodeBase64));
-     return decodeBase64;        
+	byte[] decodeBase64 = Base64.decodeBase64(base64str);	 
+    return decodeBase64;        
     } 
     catch (Exception e){
        e.printStackTrace();
@@ -151,9 +151,8 @@ public static byte[] saveBase64strToFile1(String base64str){
         return null;
     }
     try{
-	byte[] decodeBase64 = net.iharder.Base64.decode(base64str.getBytes());
-	System.out.println("Result:" + new String(decodeBase64));
-     return decodeBase64;        
+	byte[] decodeBase64 = net.iharder.Base64.decode(base64str.getBytes());	
+    return decodeBase64;        
     } 
     catch (Exception e){
        e.printStackTrace();

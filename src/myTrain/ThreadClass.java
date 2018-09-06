@@ -3,15 +3,15 @@ package myTrain;
 public class ThreadClass {
 	
 	public static void main(String[] args) {
-		// JavaÏß³ÌÀàÒ²ÊÇÒ»¸öobjectÀà,ËüµÄÊµÀı¶¼¼Ì³Ğ×Ôjava.lang.Thread»òÆä×ÓÀà¡£ ¿ÉÒÔÓÃÈçÏÂ·½Ê½ÓÃjavaÖĞ´´½¨Ò»¸öÏß³Ì£º
-		//Ò»µ©Ïß³ÌÆô¶¯ºóstart·½·¨¾Í»áÁ¢¼´·µ»Ø£¬¶ø²»»áµÈ´ıµ½run·½·¨Ö´ĞĞÍê±Ï²Å·µ»Ø¡£¾ÍºÃÏñrun·½·¨ÊÇÔÚÁíÍâÒ»¸öcpuÉÏÖ´ĞĞÒ»Ñù
-		//¡£µ±run·½·¨Ö´ĞĞºó£¬½«»á´òÓ¡³ö×Ö·û´®MyThread running¡£
+		// Javaçº¿ç¨‹ç±»ä¹Ÿæ˜¯ä¸€ä¸ªobjectç±»,å®ƒçš„å®ä¾‹éƒ½ç»§æ‰¿è‡ªjava.lang.Threadæˆ–å…¶å­ç±»ã€‚ å¯ä»¥ç”¨å¦‚ä¸‹æ–¹å¼ç”¨javaä¸­åˆ›å»ºä¸€ä¸ªçº¿ç¨‹ï¼š
+		//ä¸€æ—¦çº¿ç¨‹å¯åŠ¨åstartæ–¹æ³•å°±ä¼šç«‹å³è¿”å›ï¼Œè€Œä¸ä¼šç­‰å¾…åˆ°runæ–¹æ³•æ‰§è¡Œå®Œæ¯•æ‰è¿”å›ã€‚å°±å¥½åƒrunæ–¹æ³•æ˜¯åœ¨å¦å¤–ä¸€ä¸ªcpuä¸Šæ‰§è¡Œä¸€æ ·
+		//ã€‚å½“runæ–¹æ³•æ‰§è¡Œåï¼Œå°†ä¼šæ‰“å°å‡ºå­—ç¬¦ä¸²MyThread runningã€‚
 		//1
 		MyThread objThread=new MyThread();
 		objThread.start();
 		
 		//2
-		//µ±ĞÂµÄÏß³ÌµÄrun·½·¨Ö´ĞĞÒÔºó£¬¼ÆËã»ú½«»á´òÓ¡³ö×Ö·û´®¡±Thread Running¡±¡£
+		//å½“æ–°çš„çº¿ç¨‹çš„runæ–¹æ³•æ‰§è¡Œä»¥åï¼Œè®¡ç®—æœºå°†ä¼šæ‰“å°å‡ºå­—ç¬¦ä¸²â€Thread Runningâ€ã€‚
 		Thread thread=new Thread(){
 			public void run(){
 				System.out.println("ok");
@@ -19,12 +19,12 @@ public class ThreadClass {
 		};
 		thread.start();
 		
-		//µ±Ïß³ÌÔËĞĞÊ±£¬Ëü½«»áµ÷ÓÃÊµÏÖÁËRunnable½Ó¿ÚµÄrun·½·¨
+		//å½“çº¿ç¨‹è¿è¡Œæ—¶ï¼Œå®ƒå°†ä¼šè°ƒç”¨å®ç°äº†Runnableæ¥å£çš„runæ–¹æ³•
 		//3
 		Thread threadThree=new Thread(new MyRunnable());
 		threadThree.start();
 		
-		//ÒòÎªÏß³Ì³Ø¿ÉÒÔÓĞĞ§µÄ¹ÜÀíÊµÏÖÁËRunnable½Ó¿ÚµÄÏß³Ì£¬Èç¹ûÏß³Ì³ØÂúÁË£¬ĞÂµÄÏß³Ì¾Í»áÅÅ¶ÓµÈºòÖ´ĞĞ£¬Ö±µ½Ïß³Ì³Ø¿ÕÏĞ³öÀ´ÎªÖ¹
+		//å› ä¸ºçº¿ç¨‹æ± å¯ä»¥æœ‰æ•ˆçš„ç®¡ç†å®ç°äº†Runnableæ¥å£çš„çº¿ç¨‹ï¼Œå¦‚æœçº¿ç¨‹æ± æ»¡äº†ï¼Œæ–°çš„çº¿ç¨‹å°±ä¼šæ’é˜Ÿç­‰å€™æ‰§è¡Œï¼Œç›´åˆ°çº¿ç¨‹æ± ç©ºé—²å‡ºæ¥ä¸ºæ­¢
 		//4
 		Runnable objRunable=new Runnable(){
 			public void run(){
@@ -34,13 +34,13 @@ public class ThreadClass {
 		Thread threadFour = new Thread(objRunable);
 		thread.start();
 	}
-	//µÚÒ»ÖÖ·½Ê½
+	//ç¬¬ä¸€ç§æ–¹å¼
 	public static class MyThread extends Thread{
 		public void run(){
 			System.out.println("runing");
 		}
 	}
-	//µÚ¶şÖÖ·½Ê½
+	//ç¬¬äºŒç§æ–¹å¼
 	public static class MyRunnable implements Runnable{
 		public void run(){
 			 System.out.println("MyRunnable running");

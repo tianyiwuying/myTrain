@@ -8,12 +8,12 @@ import java.io.IOException;
 
 public class StatisticsRows
 {
-	    private static int normalLines = 0;  //ÓĞĞ§³ÌĞòĞĞÊı
-	    private static int whiteLines = 0;   //¿Õ°×ĞĞÊı
-	    private static int commentLines = 0; //×¢ÊÍĞĞÊı
+	    private static int normalLines = 0;  //æœ‰æ•ˆç¨‹åºè¡Œæ•°
+	    private static int whiteLines = 0;   //ç©ºç™½è¡Œæ•°
+	    private static int commentLines = 0; //æ³¨é‡Šè¡Œæ•°
 
 	    public static void countCodeLine(File file) {
-	        System.out.println("´úÂëĞĞÊıÍ³¼Æ£º" + file.getAbsolutePath());
+	        System.out.println("ä»£ç è¡Œæ•°ç»Ÿè®¡ï¼š" + file.getAbsolutePath());
 	        if (file.exists()) {
 	            try {
 	                scanFile(file);
@@ -21,14 +21,14 @@ public class StatisticsRows
 	                e.printStackTrace();
 	            }
 	        } else {
-	            System.out.println("ÎÄ¼ş²»´æÔÚ£¡");
+	            System.out.println("æ–‡ä»¶ä¸å­˜åœ¨ï¼");
 	            System.exit(0);
 	        }
-	        System.out.println(file.getAbsolutePath() + " ,javaÎÄ¼şÍ³¼Æ£º" +
-	                "×ÜÓĞĞ§´úÂëĞĞÊı: " + normalLines +
-	                " ,×Ü¿Õ°×ĞĞÊı£º" + whiteLines +
-	                " ,×Ü×¢ÊÍĞĞÊı£º" + commentLines +
-	                " ,×ÜĞĞÊı£º" + (normalLines + whiteLines + commentLines));
+	        System.out.println(file.getAbsolutePath() + " ,javaæ–‡ä»¶ç»Ÿè®¡ï¼š" +
+	                "æ€»æœ‰æ•ˆä»£ç è¡Œæ•°: " + normalLines +
+	                " ,æ€»ç©ºç™½è¡Œæ•°ï¼š" + whiteLines +
+	                " ,æ€»æ³¨é‡Šè¡Œæ•°ï¼š" + commentLines +
+	                " ,æ€»è¡Œæ•°ï¼š" + (normalLines + whiteLines + commentLines));
 	    }
 
 	    private static void scanFile(File file) throws IOException {
@@ -57,7 +57,7 @@ public class StatisticsRows
 
 	    private static void count(File file) {
 	        BufferedReader br = null;
-	        // ÅĞ¶Ï´ËĞĞÊÇ·ñÎª×¢ÊÍĞĞ
+	        // åˆ¤æ–­æ­¤è¡Œæ˜¯å¦ä¸ºæ³¨é‡Šè¡Œ
 	        boolean comment = false;
 	        int temp_whiteLines = 0;
 	        int temp_commentLines = 0;
@@ -69,38 +69,38 @@ public class StatisticsRows
 	            while ((line = br.readLine()) != null) {
 	                line = line.trim();
 	                if (line.matches("^[//s&&[^//n]]*$")) {
-	                    // ¿ÕĞĞ
+	                    // ç©ºè¡Œ
 	                    whiteLines++;
 	                    temp_whiteLines++;
 	                } else if (line.startsWith("/*") && !line.endsWith("*/")) {
-	                    // ÅĞ¶Ï´ËĞĞÎª"/*"¿ªÍ·µÄ×¢ÊÍĞĞ
+	                    // åˆ¤æ–­æ­¤è¡Œä¸º"/*"å¼€å¤´çš„æ³¨é‡Šè¡Œ
 	                    commentLines++;
 	                    comment = true;
 	                } else if (comment == true && !line.endsWith("*/")) {
-	                    // Îª¶àĞĞ×¢ÊÍÖĞµÄÒ»ĞĞ£¨²»ÊÇ¿ªÍ·ºÍ½áÎ²£©
+	                    // ä¸ºå¤šè¡Œæ³¨é‡Šä¸­çš„ä¸€è¡Œï¼ˆä¸æ˜¯å¼€å¤´å’Œç»“å°¾ï¼‰
 	                    commentLines++;
 	                    temp_commentLines++;
 	                } else if (comment == true && line.endsWith("*/")) {
-	                    // Îª¶àĞĞ×¢ÊÍµÄ½áÊøĞĞ
+	                    // ä¸ºå¤šè¡Œæ³¨é‡Šçš„ç»“æŸè¡Œ
 	                    commentLines++;
 	                    temp_commentLines++;
 	                    comment = false;
 	                } else if (line.startsWith("//")) {
-	                    // µ¥ĞĞ×¢ÊÍĞĞ
+	                    // å•è¡Œæ³¨é‡Šè¡Œ
 	                    commentLines++;
 	                    temp_commentLines++;
 	                } else {
-	                    // Õı³£´úÂëĞĞ
+	                    // æ­£å¸¸ä»£ç è¡Œ
 	                    normalLines++;
 	                    temp_normalLines++;
 	                }
 	            }
 
 	            System.out.println(file.getName() +
-	                    " ,ÓĞĞ§ĞĞÊı" + temp_normalLines +
-	                    " ,¿Õ°×ĞĞÊı" + temp_whiteLines +
-	                    " ,×¢ÊÍĞĞÊı" + temp_commentLines +
-	                    " ,×ÜĞĞÊı" + (temp_normalLines + temp_whiteLines + temp_commentLines));
+	                    " ,æœ‰æ•ˆè¡Œæ•°" + temp_normalLines +
+	                    " ,ç©ºç™½è¡Œæ•°" + temp_whiteLines +
+	                    " ,æ³¨é‡Šè¡Œæ•°" + temp_commentLines +
+	                    " ,æ€»è¡Œæ•°" + (temp_normalLines + temp_whiteLines + temp_commentLines));
 	        } catch (FileNotFoundException e) {
 	            e.printStackTrace();
 	        } catch (IOException e) {
@@ -117,7 +117,7 @@ public class StatisticsRows
 	        }
 	    }
 
-	    //²âÊÔ
+	    //æµ‹è¯•
 	    public static void main(String[] args) {
 	        File file = new File("H:\\gongxiang\\SWNC");
 	        countCodeLine(file);

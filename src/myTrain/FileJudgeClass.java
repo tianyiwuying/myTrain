@@ -6,10 +6,10 @@ import java.util.Date;
 public class FileJudgeClass {
 public static void main(String[] args) 
 {
-	String file="C:/Users/user/Desktop/茶坞";
+	String file="C:/Users/user/Desktop/鑼跺潪";
 	File[] fs=(new File(file)).listFiles();
 	Date d=new Date();
-	//删除6小时前的数据
+	//鍒犻櫎6灏忔椂鍓嶇殑鏁版嵁
 	for(File f:fs)
 	{
 		System.out.println(f.getName()+"---"+f.lastModified());
