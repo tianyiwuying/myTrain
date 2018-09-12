@@ -44,9 +44,9 @@ public class ProductCharts {
 		ByteArrayOutputStream byteArrayOut = new ByteArrayOutputStream();
 		// 设置具体数据
 		List<String> timeList = new ArrayList<String>();
-		timeList.add("10:00");
-		timeList.add("11:00");
-		timeList.add("12:00");
+		timeList.add("周一");
+		timeList.add("周三");
+		timeList.add("周五");
 		List<Integer> appList = new ArrayList<Integer>();
 		appList.add(120);
 		appList.add(200);
