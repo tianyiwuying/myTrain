@@ -12,13 +12,16 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import org.apache.commons.codec.binary.Base64;
+
 import javax.imageio.ImageIO;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFClientAnchor;
 import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFPalette;
 import org.apache.poi.hssf.usermodel.HSSFPatriarch;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -95,12 +98,18 @@ public static void main(String[] args) throws IOException
 	//设置指定列的列宽，256 * 50这种写法是因为width参数单位是单个字符的256分之一
 	sheet.setColumnWidth(cell.getColumnIndex(), 256 * 50);
 	
-	 HSSFCellStyle style=wb.createCellStyle();	
-     //style.setFillBackgroundColor(HSSFColor.SKY_BLUE.index);	
-     style.setFillBackgroundColor((short)25);
-     style.setFillPattern(FillPatternType.ALT_BARS);
-     
-	 HSSFFont  fontStyle=wb.createFont(); 
+	 HSSFCellStyle style=wb.createCellStyle();
+	 
+	 HSSFPalette palette = wb.getCustomPalette(); 	  
+	 //replacing the standard red with freebsd.org red	 
+	
+	 //style.setFillBackgroundColor(HSSFColor.SKY_BLUE.index);	
+     //style.setFillBackgroundColor(HSSFColor.GREEN.index);
+
+    // style.setFillBackgroundColor(HSSFColor.LIME.index);
+	  style.setFillForegroundColor(HSSFColor.BLUE_GREY.index); 
+		 style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+	/* HSSFFont  fontStyle=wb.createFont(); 
 	//设置字体样式  
 	  fontStyle.setFontName("宋体");  
 	  //设置字体高度  
@@ -113,7 +122,7 @@ public static void main(String[] args) throws IOException
 	 fontStyle.setItalic(true); 	  
 	 //设置下划线  	  
 	 fontStyle.setUnderline(HSSFFont.U_SINGLE);	 
-	 style.setFont(fontStyle); 
+	 style.setFont(fontStyle); */
 	
 	 //设置单元格的值  
 	 cell.setCellStyle(style);	
