@@ -38,6 +38,7 @@ public static void main(String[] args) throws IOException
 	SimpleDateFormat objSimple=new SimpleDateFormat("yyyyMMddHHmmss");
 	//获取相对项目的路径
 	String execlPath=System.getProperty("user.dir")+File.separator+objSimple.format(objTime)+".xls";
+	//String execlPath=System.getProperty("user.dir")+File.separator+"ceshi"+".xls";
 	System.out.println(execlPath);
 	//创建HSSFWorkbook对象  
 	HSSFWorkbook wb=new HSSFWorkbook();	
@@ -127,6 +128,8 @@ public static void main(String[] args) throws IOException
 	 //设置单元格的值  
 	 cell.setCellStyle(style);	
 	 cell.setCellValue("单元格中的中文"); 
+	 File objFile=new File(execlPath);
+	 if(objFile.exists())objFile.delete();
 	//输出Excel文件  
 	FileOutputStream output=new FileOutputStream(execlPath); 
 	wb.write(output); 
